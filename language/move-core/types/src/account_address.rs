@@ -25,7 +25,7 @@ impl AccountAddress {
     } else if cfg!(feature = "address32") {
         32
     } else {
-        16
+        32
     };
 
     /// Hex address: 0x0
