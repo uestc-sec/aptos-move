@@ -266,7 +266,7 @@ impl<'de> Deserialize<'de> for AccountAddress {
             // as the original type.
             #[derive(::serde::Deserialize)]
             #[serde(rename = "AccountAddress")]
-            // struct Value([u8; AccountAddress::LENGTH]);
+            struct Value([u8; AccountAddress::LENGTH]);
 
             let value = Value::deserialize(deserializer)?;
             Ok(AccountAddress::new(value.0))
