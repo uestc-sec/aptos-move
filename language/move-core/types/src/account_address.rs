@@ -25,7 +25,7 @@ impl AccountAddress {
     } else if cfg!(feature = "address32") {
         32
     } else {
-        32
+        16
     };
 
     /// Hex address: 0x0
@@ -265,7 +265,8 @@ impl<'de> Deserialize<'de> for AccountAddress {
             // as the original type.
             #[derive(::serde::Deserialize)]
             #[serde(rename = "AccountAddress")]
-            struct Value([u8; AccountAddress::LENGTH]);
+            // struct Value([u8; AccountAddress::LENGTH]);
+            struct Value([u8; 32 as usize]);
 
             let value = Value::deserialize(deserializer)?;
             Ok(AccountAddress::new(value.0))
